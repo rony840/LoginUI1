@@ -16,7 +16,7 @@ function App(): React.JSX.Element {
   return (
     <View style={styles.container}>
       {/* <Logo/> */}
-      <Signup/>
+      <Login/>
         
       
 

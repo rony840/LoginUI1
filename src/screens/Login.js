@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, SafeAreaView, View, Text } from 'react-native';
 import { FormButton, Logo, Heading, Footer, FormField } from '../components/Components';
 import Background from '../components/Background'; // Import the Background component
+import FormFieldCls from '../components/FormFieldClass';
 
 const Login = () => {
   return (
@@ -20,8 +21,8 @@ const Login = () => {
 
         {/* Form Fields and Button */}
         <View style={styles.formContainer}>
-          <FormField title={'Email'} placeholder={'johndoe@example.com'} />
-          <FormField title={'Password'} placeholder={'* * * * * * *'} />
+          <FormFieldCls title={'Email'} placeholder={'johndoe@example.com'} />
+          <FormFieldCls title={'Password'} placeholder={'* * * * * * *'} />
           <FormButton title={'Login'}/>
         </View>
 
