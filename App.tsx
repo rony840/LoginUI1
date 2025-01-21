@@ -7,6 +7,7 @@
 
 import React from 'react';
 import {
+  SafeAreaView,
   StyleSheet,
   View,
 } from 'react-native';
@@ -14,13 +15,13 @@ import {Login, Signup} from './src/screens/Screens'
 
 function App(): React.JSX.Element {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       {/* <Logo/> */}
       <Login/>
         
       
 
-    </View>
+    </SafeAreaView>
     
   );
 }
