@@ -28,16 +28,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   backButton: {
-    position: 'absolute',
-    left: 10,
+    left:-80,
+    marginleft: '10%',
+    alignSelf:'left',
     top: 10,
     zIndex: 10, // Ensures the button is on top of the text
   },
   header: {
     fontSize: 40,
-    fontWeight: '700',
+    fontWeight: '500',
     color: 'black',
-    marginLeft: 40, // Make space for the back button
+    marginLeft: 0, // Make space for the back button
   },
 });
 
