@@ -40,7 +40,7 @@ const Welcome = ({ route }) => {
     try {
       const existingValue = await AsyncStorage.getItem('message');
       const newValue = { ...JSON.parse(existingValue || '{}'), newField: 'New Value' };
-      await AsyncStorage.mergeItem('message', 'hello world');
+      await AsyncStorage.mergeItem('message', JSON.stringify(newValue));
       alert('Message merged successfully!');
     } catch (e) {
       alert(e);
@@ -68,9 +68,8 @@ const Welcome = ({ route }) => {
   const multiSetItems = async () => {
     try {
       const items = [
-        ['message1', 'Hello Team!'],
-        ['message2', 'How is everyone?'],
-        ['message3', 'Lets Learn React Native'],
+        ['message1', 'Hello World!'],
+        ['message2', 'How are you?'],
       ];
       await AsyncStorage.multiSet(items);
       alert('Multiple messages saved!');
@@ -81,7 +80,7 @@ const Welcome = ({ route }) => {
 
   const multiGetItems = async () => {
     try {
-      const keys = ['message','message1', 'message2','message3'];
+      const keys = ['message','message1', 'message2'];
       const values = await AsyncStorage.multiGet(keys);
       setMultiMessages(values);
     } catch (e) {
@@ -145,7 +144,7 @@ const Welcome = ({ route }) => {
         <FormButton title={'Multi-remove messages'} onPress={multiRemoveItems} />
         <FormButton title={'Clear storage'} onPress={clearStorage} />
         <FormButton title={'Get all keys'} onPress={getAllStorageKeys} />
-        
+        </ScrollView>
         {multiMessages.length > 0 && (
           <View>
             {multiMessages.map(([key, value], index) => (
@@ -158,7 +157,7 @@ const Welcome = ({ route }) => {
         <View>
           <Text>All Storage Keys: {JSON.stringify(allKeys)}</Text>
         </View>
-        </ScrollView>
+        
       </View>
     </SafeAreaView>
   );

@@ -1,11 +1,12 @@
 import {View,Text,StyleSheet, TextInput} from 'react-native';
 
 const FormInput = props => {
-    const {title,onChange,placeholder} = props;
+    const {title,onChange,placeholder,value1} = props;
     return(
         <View style={styles.container}>
             <Text style={{...styles.frmLabel}}>{title||"Enter a Label"}</Text>
             <TextInput
+              value={value1}
               autoCapitalize="none"
               autoCorrect={false}
               clearButtonMode="while-editing"
