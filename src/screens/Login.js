@@ -26,7 +26,7 @@ const Login = () => {
         <View style={styles.formContainer}>
           <FormField title={'Email'} placeholder={'johndoe@example.com'} />
           <FormField title={'Password'} placeholder={'* * * * * * *'} />
-          <FormButton title={'Login'} />
+          <FormButton title={'Login'} onPress={() => navigation.navigate('Welcome')}/>
         </View>
 
         {/* Footer */}
