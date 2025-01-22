@@ -107,6 +107,11 @@ android {
     }
 }
 
+// ** Add this block here, just after the `android {}` block **
+project.ext.vectoricons = [
+    iconFontNames: ['Ionicons.ttf', 'MaterialIcons.ttf']
+]
+
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")

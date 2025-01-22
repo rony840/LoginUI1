@@ -1,13 +1,17 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, View, Text } from 'react-native';
+import { StyleSheet, SafeAreaView, View } from 'react-native';
 import { FormButton, Logo, Heading, Footer, FormField } from '../components/Components';
 import Background from '../components/Background'; // Import the Background component
+import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
+  const navigation = useNavigation();
   return (
+    
     <SafeAreaView style={styles.container}>
       {/* Background Component */}
       <Background />
+      
       <View style={styles.logoContainer}>
         <Logo />
       </View>
@@ -22,11 +26,11 @@ const Login = () => {
         <View style={styles.formContainer}>
           <FormField title={'Email'} placeholder={'johndoe@example.com'} />
           <FormField title={'Password'} placeholder={'* * * * * * *'} />
-          <FormButton title={'Login'}/>
+          <FormButton title={'Login'} />
         </View>
 
         {/* Footer */}
-        <Footer title1={"Don't have an account?"} title2={"SignUp"}/>
+        <Footer title1={"Don't have an account?"} title2={"SignUp"} onPress={() => navigation.navigate('Signup')}/>
       </View>
     </SafeAreaView>
   );

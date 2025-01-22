@@ -1,21 +1,20 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
- // Import Ionicons (or any icon library you prefer)
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Heading = (props) => {
-  const { title, style2, showBackButton, onBackPress } = props; // Adding `showBackButton` and `onBackPress` props
-    
+  const { title, style2, showBackButton, onBackPress } = props;
+
   return (
     <View style={styles.headerContainer}>
       {/* Conditional rendering of the back button */}
       {showBackButton && (
         <TouchableOpacity style={styles.backButton} onPress={onBackPress}>
-          <Ionicons name="arrow-back" size={30} color="red" />
+          <FontAwesome name="arrow-left" size={30} color="white" />
         </TouchableOpacity>
       )}
 
-      <Text style={{ ...styles.header, ...style2 }}>
+      <Text style={[styles.header, style2]}>
         {title || 'Add Heading'}
       </Text>
     </View>
@@ -26,19 +25,23 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
+    width: '100%', // Make sure it takes full width
+    paddingHorizontal: 10, // Optional, for some spacing
   },
   backButton: {
-    left:-80,
-    marginleft: '10%',
-    alignSelf:'left',
-    top: 10,
-    zIndex: 10, // Ensures the button is on top of the text
+    position: 'absolute',
+    left: 10, // Adjust based on your preference
+    top: 10, // Top alignment
+    zIndex: 10, // Ensure the back button is above text
   },
   header: {
     fontSize: 40,
     fontWeight: '500',
     color: 'black',
-    marginLeft: 0, // Make space for the back button
+    textAlign: 'center', // Center the heading text
+    marginLeft: 0, // Remove any margin
   },
 });
 

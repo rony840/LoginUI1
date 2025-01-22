@@ -2,12 +2,13 @@ import React from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 
 const Footer = props => {
-    const {title1,title2} = props;
+    const {title1,title2,onPress} = props;
   return (
     <View style={styles.footer}>
       <View style={styles.footerContent}>
         <Text style={styles.footerText}>{title1||"Footer"} </Text>
         <Pressable
+        onPress={onPress}
           style={({ pressed }) => [
             {
               backgroundColor: pressed ? 'rgb(255, 255, 255)' : 'rgba(255, 255, 255, 0)',

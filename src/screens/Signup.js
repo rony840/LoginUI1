@@ -1,32 +1,36 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, View, Text } from 'react-native';
-import { FormButton, Logo, Heading, Footer, FormField } from '../components/Components';
+import { StyleSheet, SafeAreaView, View } from 'react-native';
+import { FormButton,Heading, Footer, FormField } from '../components/Components';
 import Background from '../components/Background'; // Import the Background component
+import { useSafeAreaInsets } from 'react-native-safe-area-context'; // Import SafeArea context for dynamic insets
+import { useNavigation } from '@react-navigation/native';
 
 const Signup = () => {
+  const insets = useSafeAreaInsets(); // Get safe area insets (top, bottom, left, right)
+  const navigation = useNavigation();
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, { paddingTop: insets.top }]}>
       {/* Background Component */}
-      <Background style2={{flex:5}}/>
+      <Background style2={{ flex: 5 }} />
 
-      <View style={styles.contentContainer}>
+      <View style={[styles.contentContainer, { paddingTop: insets.top }]}>
         {/* Header with Logo and Heading */}
         <View style={styles.header}>
-          <Heading title={'Sign Up'} style2={{color:'white'}} showBackButton={true}/>
+          <Heading title={'Sign Up'} style2={{ color: 'white' }} showBackButton={true} />
         </View>
 
         {/* Form Fields and Button */}
         <View style={styles.formContainer}>
-        <FormField title={'First Name'} placeholder={'John'} />
-        <FormField title={'Last Name'} placeholder={'Doe'} />
-        <FormField title={'Email'} placeholder={'johndoe@example.com'} />   
-        <FormField title={'Password'} placeholder={'* * * * * * *'} />
-        <FormField title={'Confirm Password'} placeholder={'* * * * * * *'} />
-        <FormButton title={'Sign Up'}/>
+          <FormField title={'First Name'} placeholder={'John'} />
+          <FormField title={'Last Name'} placeholder={'Doe'} />
+          <FormField title={'Email'} placeholder={'johndoe@example.com'} />
+          <FormField title={'Password'} placeholder={'* * * * * * *'} />
+          <FormField title={'Confirm Password'} placeholder={'* * * * * * *'} />
+          <FormButton title={'Sign Up'} />
         </View>
 
         {/* Footer */}
-        <Footer title1={"Already have an account?"} title2={"SignIn"}/>
+        <Footer title1={"Already have an account?"} title2={"SignIn"} onPress={() => navigation.replace('Login')}/>
       </View>
     </SafeAreaView>
   );
@@ -48,18 +52,17 @@ const styles = StyleSheet.create({
     paddingVertical: '5%',
   },
   header: {
-    marginTop:"5%",
+    marginTop: "5%", // Adjust for better spacing on both Android and iOS
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 50, // Adjust for spacing between header and form
   },
   formContainer: {
     flex: 1,
-    top:0,
-    marginTop:'10%',
+    top: 0,
+    marginTop: '10%',
     justifyContent: 'center',
   },
 });
 
 export default Signup;
-

@@ -8,19 +8,15 @@
 import React from 'react';
 import {
   StyleSheet,
-  View,
 } from 'react-native';
-import {Login, Signup} from './src/screens/Screens'
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import AppNavigation from './src/components/Navigation';
 
 function App(): React.JSX.Element {
   return (
-    <View style={styles.container}>
-      {/* <Logo/> */}
-      <Signup/>
-        
-      
-
-    </View>
+    <SafeAreaProvider style={styles.container}>
+      <AppNavigation/>
+    </SafeAreaProvider>
     
   );
 }
