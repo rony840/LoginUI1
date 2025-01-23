@@ -12,7 +12,7 @@ const Login = () => {
   const validate = () =>{
     
     setEmail(email);
-    navigation.navigate('Profile');
+    navigation.navigate('LoggedIn');
   }
   return (
     

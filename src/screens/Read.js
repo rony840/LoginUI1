@@ -15,7 +15,7 @@ const Inbox = () => {
 
       <View style={[styles.contentContainer, { paddingTop: insets.top }]}>
         <View style={styles.header}>
-          <Heading title="Inbox" style2={{ color: 'white' }} />
+          <Heading title="Read Messages" style2={{ color: 'white' }} />
         </View>
 
         {/* ScrollView to render the list using map() */}

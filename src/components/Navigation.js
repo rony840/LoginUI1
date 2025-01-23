@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Login, Signup, Outstanding, Inbox, Profile, Privacy, Payment, Wallet, Pinned, Archived, Read} from '../screens/Screens';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { Image } from 'react-native';
 
 // Stack Navigator for Login, Signup, and Welcome (Static Flow)
 const Stack = createNativeStackNavigator();
@@ -12,7 +13,7 @@ const RootStack = () => {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup" component={Signup} />
-      <Stack.Screen name="Profile"component={MyTabs}/>
+      <Stack.Screen name="LoggedIn"component={MyTabs}/>
     </Stack.Navigator>
   );
 };
@@ -22,15 +23,48 @@ const Tab = createBottomTabNavigator();
 
 const MyTabs = () => {
   return (
-    <Tab.Navigator initialRouteName="Profile1"
+    <Tab.Navigator initialRouteName="User"
     screenOptions={{
       headerShown: false,
       tabBarActiveTintColor: '#e91e63', // Active tab color
       tabBarInactiveTintColor: 'gray', // Inactive tab color
     }}>
-      <Tab.Screen name="Profile1" component={Drawer1}/>
-      <Tab.Screen name="Inbox1" component={Drawer2}/>
-      <Tab.Screen name="Payment1" component={Drawer3} />
+      <Tab.Screen name="User" component={Drawer1} options={{
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require('../icons/profile.png')} // Path to your icon
+              style={{
+                width: 25,
+                height: 25,
+                tintColor: focused ? 'black' : 'gray', // Change color based on focus
+              }}
+            />
+          ),
+        }}/>
+      <Tab.Screen name="Messages" component={Drawer2} options={{
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require('../icons/inbox.png')} // Path to your icon
+              style={{
+                width: 25,
+                height: 25,
+                tintColor: focused ? 'black' : 'gray', // Change color based on focus
+              }}
+            />
+          ),
+        }}/>
+      <Tab.Screen name="Accounts" component={Drawer3} options={{
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require('../icons/account.png')} // Path to your icon
+              style={{
+                width: 25,
+                height: 25,
+                tintColor: focused ? 'black' : 'gray', // Change color based on focus
+              }}
+            />
+          ),
+        }}/>
     </Tab.Navigator>
   );
 };

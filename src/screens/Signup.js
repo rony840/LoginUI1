@@ -20,7 +20,7 @@ const Signup = () => {
           title={'Sign Up'} 
           style2={{ color: 'white' }} 
           showBackButton={true}
-          onPress={() => navigation.replace('Login')}/>
+          onBackPress={() => navigation.replace('Login')}/>
         </View>
 
         {/* Form Fields and Button */}
