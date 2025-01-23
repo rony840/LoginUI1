@@ -16,7 +16,11 @@ const Signup = () => {
       <View style={[styles.contentContainer, { paddingTop: insets.top }]}>
         {/* Header with Logo and Heading */}
         <View style={styles.header}>
-          <Heading title={'Sign Up'} style2={{ color: 'white' }} showBackButton={true} />
+          <Heading 
+          title={'Sign Up'} 
+          style2={{ color: 'white' }} 
+          showBackButton={true}
+          onPress={() => navigation.replace('Login')}/>
         </View>
 
         {/* Form Fields and Button */}

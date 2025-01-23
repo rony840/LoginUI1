@@ -1,11 +1,19 @@
-import React from 'react';
 import { StyleSheet, SafeAreaView, View } from 'react-native';
 import { FormButton, Logo, Heading, Footer, FormField } from '../components/Components';
 import Background from '../components/Background'; // Import the Background component
 import { useNavigation } from '@react-navigation/native';
+import { useEmail } from '../EmailContext';
+import { useState } from 'react';
 
 const Login = () => {
   const navigation = useNavigation();
+  const [email, setEmailState] = useState("");
+  const {setEmail}= useEmail();
+  const validate = () =>{
+    
+    setEmail(email);
+    navigation.navigate('Profile');
+  }
   return (
     
     <SafeAreaView style={styles.container}>
@@ -24,9 +32,9 @@ const Login = () => {
 
         {/* Form Fields and Button */}
         <View style={styles.formContainer}>
-          <FormField title={'Email'} placeholder={'johndoe@example.com'} />
+          <FormField title={'Email'} placeholder={'johndoe@example.com'} onChange={setEmailState} />
           <FormField title={'Password'} placeholder={'* * * * * * *'} />
-          <FormButton title={'Login'} />
+          <FormButton title={'Login'} onPress={validate}/>
         </View>
 
         {/* Footer */}
