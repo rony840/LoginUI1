@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Heading = (props) => {
@@ -10,7 +10,8 @@ const Heading = (props) => {
       {/* Conditional rendering of the back button */}
       {showBackButton && (
         <TouchableOpacity style={styles.backButton} onPress={onBackPress}>
-          <FontAwesome name="arrow-left" size={30} color="white" />
+          <Image source={require('../icons/backarrow.png')}
+          style={styles.image}/>
         </TouchableOpacity>
       )}
 
@@ -35,6 +36,11 @@ const styles = StyleSheet.create({
     left: 10, // Adjust based on your preference
     top: 10, // Top alignment
     zIndex: 10, // Ensure the back button is above text
+  },
+  image:{
+    width: 25,
+    height: 25,
+    tintColor: 'white'
   },
   header: {
     fontSize: 40,

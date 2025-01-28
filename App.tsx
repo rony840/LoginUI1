@@ -1,3 +1,4 @@
+import './src/gesture-handler';
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -12,11 +13,17 @@ import {
 } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppNavigation from './src/components/Navigation';
+import { EmailProvider } from './src/EmailContext';
+import { NavigationContainer } from '@react-navigation/native';
 
 function App(): React.JSX.Element {
   return (
     <SafeAreaProvider style={styles.container}>
-      <AppNavigation/>
+      <EmailProvider>
+      <NavigationContainer>
+        <AppNavigation />
+      </NavigationContainer>
+    </EmailProvider>
     </SafeAreaProvider>
     
   );
