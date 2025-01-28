@@ -1,13 +1,21 @@
-import React from 'react';
+import { useEmail } from '../EmailContext';
+import { useState } from 'react';
 import { StyleSheet, SafeAreaView, View } from 'react-native';
-import { FormButton, Logo, Heading, Footer, FormField } from '../components/Components';
-import Background from '../components/Background'; // Import the Background component
+import { FormButton, Logo, Heading, Footer, FormField, Background } from '../components/Components';
 import { useNavigation } from '@react-navigation/native';
+import { Formik } from 'formik';
 
 const Login = () => {
   const navigation = useNavigation();
-
-  return (  
+  const [email, setEmailState] = useState("");
+  const {setEmail}= useEmail();
+  const validate = () =>{
+    
+    setEmail(email);
+    navigation.navigate('LoggedIn');
+  }
+  return (
+    
     <SafeAreaView style={styles.container}>
       {/* Background Component */}
       <Background />
@@ -22,12 +30,18 @@ const Login = () => {
           <Heading title={'Login'} />
         </View>
 
-        {/* Form Fields and Button */}
+        {/* Using Formik for form validation */}
+        <Formik
+        initialValues={{email:'',password:''}}
+        onSubmit={value => console.log(value)}> 
+          {/* Form Fields and Button */}
         <View style={styles.formContainer}>
           <FormField title={'Email'} placeholder={'johndoe@example.com'} onChange={setEmailState} />
           <FormField title={'Password'} placeholder={'* * * * * * *'} />
           <FormButton title={'Login'} onPress={validate}/>
         </View>
+        </Formik>
+        
 
         {/* Footer */}
         <Footer title1={"Don't have an account?"} title2={"SignUp"} onPress={() => navigation.navigate('Signup')}/>
