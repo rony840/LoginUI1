@@ -1,6 +1,6 @@
 import { createStaticNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {Login,Signup} from '../screens/Screens';
+import {Login,Signup,Welcome} from '../screens/Screens';
 
 const RootStack = createNativeStackNavigator({
   screens: {
@@ -10,6 +10,10 @@ const RootStack = createNativeStackNavigator({
     },
     Signup: {
       screen: Signup,
+      options: { headerShown: false }  // Disable header for Landing screen
+    },
+    Welcome: {
+      screen: Welcome,
       options: { headerShown: false }  // Disable header for Landing screen
     },
   },
