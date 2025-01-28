@@ -6,8 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
   const navigation = useNavigation();
-  return (
-    
+
+  return (  
     <SafeAreaView style={styles.container}>
       {/* Background Component */}
       <Background />
