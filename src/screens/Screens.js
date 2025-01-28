@@ -14,4 +14,4 @@ import Read from "./Read"
 import Welcome from "./Welcome";
 
 
-export {Login, Signup};
+export {Login, Signup, Profile, Outstanding, Inbox,Privacy,Payment,Wallet,Archived,Pinned,Read};
