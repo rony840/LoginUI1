@@ -4,19 +4,22 @@ import { StyleSheet, SafeAreaView, View } from 'react-native';
 import { FormButton, Logo, Heading, Footer, FormField, Background } from '../components/Components';
 import { useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
+import { LoginSchemaValidator } from '../schemas/LoginSchema';
 
 const Login = () => {
+  console.log('i am re rendering')
   const navigation = useNavigation();
-  const [email, setEmailState] = useState("");
   const {setEmail}= useEmail();
-  const validate = () =>{
-    
-    setEmail(email);
+  
+  const validate = (value) =>{
+    const username = value.email.split('@')[0];
+    setEmail(username);
     navigation.navigate('LoggedIn');
   }
   return (
     
     <SafeAreaView style={styles.container}>
+      
       {/* Background Component */}
       <Background />
       
@@ -33,13 +36,27 @@ const Login = () => {
         {/* Using Formik for form validation */}
         <Formik
         initialValues={{email:'',password:''}}
-        onSubmit={value => console.log(value)}> 
-          {/* Form Fields and Button */}
-        <View style={styles.formContainer}>
-          <FormField title={'Email'} placeholder={'johndoe@example.com'} onChange={setEmailState} />
-          <FormField title={'Password'} placeholder={'* * * * * * *'} />
-          <FormButton title={'Login'} onPress={validate}/>
-        </View>
+        validationSchema={LoginSchemaValidator}
+        onSubmit={value => validate(value)}>
+
+          {({handleChange,handleSubmit,values,errors}) => (
+            
+            <View style={styles.formContainer}>
+            <FormField
+            title={'Email'}
+            placeholder={'johndoe@example.com'}
+            onChange={handleChange('email')}
+            error={errors.email}
+            />
+            <FormField
+            title={'Password'}
+            placeholder={'* * * * * * *'}
+            onChange={handleChange('password')}
+            error={errors.password}
+            />
+            <FormButton title={'Login'} onPress={handleSubmit}/>
+          </View>
+        )}
         </Formik>
         
 
