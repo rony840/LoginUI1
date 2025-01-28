@@ -1,6 +1,6 @@
 import {View,Text,StyleSheet, TextInput} from 'react-native';
 
-const FormInput = props => {
+const FormField = props => {
     const {title,onChange,placeholder} = props;
     return(
         <View style={styles.container}>
@@ -51,4 +51,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default FormInput;
+export default FormField;

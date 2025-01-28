@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, SafeAreaView, View } from 'react-native';
 import { FormButton, Logo, Heading, Footer, FormField } from '../components/Components';
 import Background from '../components/Background'; // Import the Background component
-import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
   const navigation = useNavigation();
@@ -26,7 +25,7 @@ const Login = () => {
         <View style={styles.formContainer}>
           <FormField title={'Email'} placeholder={'johndoe@example.com'} />
           <FormField title={'Password'} placeholder={'* * * * * * *'} />
-          <FormButton title={'Login'} />
+          <FormButton title={'Login'}/>
         </View>
 
         {/* Footer */}
