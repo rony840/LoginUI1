@@ -6,7 +6,6 @@ import { Formik } from 'formik';
 import { LoginSchemaValidator } from '../schemas/LoginSchema';
 
 const Login = () => {
-  console.log('i am re rendering')
   const navigation = useNavigation();
   const {setEmail}= useEmail();
   

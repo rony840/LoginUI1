@@ -3,7 +3,7 @@ import { Heading } from '../components/Components';
 import Background from '../components/Background'; 
 import { useSafeAreaInsets } from 'react-native-safe-area-context'; 
 
-const ErrForAndroid = () => {
+const Error = () => {
   const insets = useSafeAreaInsets();
   return (
     <SafeAreaView style={[styles.container, { paddingTop: insets.top }]}>
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ErrForAndroid;
+export default Error;

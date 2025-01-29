@@ -11,8 +11,6 @@ import Pinned from "./Pinned";
 import Read from "./Read";
 import Logout from "./Logout";
 import Welcome from "./Welcome";
-import ErrForAndroid from "./ErrScreenForAndroid";
-import ErrForIOS from "./ErrScreenForIOS";
 
 
 export {Login,
@@ -27,7 +25,5 @@ export {Login,
     Pinned, 
     Read, 
     Welcome, 
-    Logout,
-    ErrForAndroid,
-    ErrForIOS
+    Logout
     };

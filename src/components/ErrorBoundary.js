@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet } from 'react-native';
-import {ErrForAndroid,ErrForIOS} from '../screens/Screens';
+import Error from '../screens/Error';
 
 class ErrorBoundary extends Component {
   state = {
@@ -21,11 +21,11 @@ class ErrorBoundary extends Component {
       // Conditionally render different error screens based on platform
       if (Platform.OS === 'ios') {
         return (
-          <ErrForIOS/>
+          <Error/>
         );
       } else if (Platform.OS === 'android') {
         return (
-          <ErrForAndroid/>
+          <Error/>
         );
       }
     }
