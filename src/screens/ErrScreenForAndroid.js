@@ -1,22 +1,23 @@
-import { StyleSheet, SafeAreaView, View } from 'react-native';
+import { StyleSheet, SafeAreaView, View, Image } from 'react-native';
 import { Heading } from '../components/Components';
 import Background from '../components/Background'; 
 import { useSafeAreaInsets } from 'react-native-safe-area-context'; 
 
-
-const Privacy = () => {
+const ErrForAndroid = () => {
   const insets = useSafeAreaInsets();
-  throw new Error ();
-  
   return (
     <SafeAreaView style={[styles.container, { paddingTop: insets.top }]}>
       <Background style2={{ flex: 5 }} />
-
       <View style={[styles.contentContainer, { paddingTop: insets.top }]}>
         <View style={styles.header}>
-          <Heading title={`Privacy Settings`} style2={{ color: 'white' }} />
+          <Heading title={`Error on Android`} style2={{ color: 'white' }} />
+        </View>
+        <View style={styles.cont2}>
+        <Image style={styles.icn} source={require('../icons/brokeAndroid.png')}/>
+        <Heading title={`This screen is not supported on Android Devices`} style2={{ color: 'black', fontSize:18 }} />
         </View>
       </View>
+      
     </SafeAreaView>
   );
 };
@@ -36,18 +37,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: '5%',
     paddingVertical: '5%',
   },
+  icn:{
+    width:200,
+    height:200,
+    marginBottom:50
+  },
+  cont2:{
+    flex: 1,
+    top: 0,
+    marginTop: '10%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   header: {
     marginTop: '5%',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 50,
-  },
-  formContainer: {
-    flex: 1,
-    top: 0,
-    marginTop: '10%',
-    justifyContent: 'center',
-  },
+  }
 });
 
-export default Privacy;
+export default ErrForAndroid;

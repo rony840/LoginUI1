@@ -10,10 +10,24 @@ import Archived from "./Archived";
 import Pinned from "./Pinned";
 import Read from "./Read";
 import Logout from "./Logout";
-
-
-
 import Welcome from "./Welcome";
+import ErrForAndroid from "./ErrScreenForAndroid";
+import ErrForIOS from "./ErrScreenForIOS";
 
 
-export {Login, Signup, Profile, Outstanding, Inbox, Privacy, Payment, Wallet, Archived, Pinned, Read, Welcome, Profile, Outstanding, Inbox,Privacy,Payment,Wallet,Archived,Pinned,Read, Logout};
+export {Login,
+    Signup,
+    Profile,
+    Outstanding,
+    Inbox, 
+    Privacy,
+    Payment, 
+    Wallet, 
+    Archived, 
+    Pinned, 
+    Read, 
+    Welcome, 
+    Logout,
+    ErrForAndroid,
+    ErrForIOS
+    };
