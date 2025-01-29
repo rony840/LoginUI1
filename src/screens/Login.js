@@ -1,11 +1,9 @@
 import { useEmail } from '../EmailContext';
-import { useState } from 'react';
 import { StyleSheet, SafeAreaView, View } from 'react-native';
 import { FormButton, Logo, Heading, Footer, FormField, Background } from '../components/Components';
 import { useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
 import { LoginSchemaValidator } from '../schemas/LoginSchema';
-
 
 const Login = () => {
   console.log('i am re rendering')
@@ -15,13 +13,6 @@ const Login = () => {
   const validate = (value) =>{
     const username = value.email.split('@')[0];
     setEmail(username);
-    navigation.navigate('LoggedIn');
-  }
-  const [email, setEmailState] = useState("");
-  const {setEmail}= useEmail();
-  const validate = () =>{
-    
-    setEmail(email);
     navigation.navigate('LoggedIn');
   }
   return (
@@ -41,7 +32,7 @@ const Login = () => {
           <Heading title={'Login'} />
         </View>
 
-          {/* Using Formik for form validation */}
+        {/* Using Formik for form validation */}
         <Formik
         initialValues={{email:'',password:''}}
         validationSchema={LoginSchemaValidator}
@@ -66,8 +57,6 @@ const Login = () => {
           </View>
         )}
         </Formik>
-        
-        
         
 
         {/* Footer */}
