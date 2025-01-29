@@ -11,7 +11,6 @@ import {
   SafeAreaView,
   StyleSheet,
 } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppNavigation from './src/components/Navigation';
 import { EmailProvider } from './src/EmailContext';
 import { NavigationContainer } from '@react-navigation/native';
@@ -19,7 +18,7 @@ import ErrorBoundary from './src/components/ErrorBoundary';
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaProvider style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <ErrorBoundary>
       <EmailProvider>
       <NavigationContainer>
@@ -27,7 +26,7 @@ function App(): React.JSX.Element {
       </NavigationContainer>
     </EmailProvider>
       </ErrorBoundary>
-    </SafeAreaProvider>
+    </SafeAreaView>
     
   );
 }

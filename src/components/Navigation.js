@@ -73,7 +73,7 @@ const Drawer = createDrawerNavigator();
 
 function Drawer1() {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator >
       <Drawer.Screen name="Profile" component={Profile} />
       <Drawer.Screen name="Privacy" component={Privacy} />
       <Drawer.Screen name="Logout" component={Logout} />
