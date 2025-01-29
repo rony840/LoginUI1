@@ -8,9 +8,11 @@ import Payment from "./Payment";
 import Wallet from "./Wallet";
 import Archived from "./Archived";
 import Pinned from "./Pinned";
-import Read from "./Read"
+import Read from "./Read";
+import Logout from "./Logout";
 
 
 
 
-export {Login, Signup, Profile, Outstanding, Inbox, Privacy, Payment, Wallet, Archived, Pinned, Read};
+
+export {Login, Signup, Profile, Outstanding, Inbox, Privacy, Payment, Wallet, Archived, Pinned, Read, Logout};
