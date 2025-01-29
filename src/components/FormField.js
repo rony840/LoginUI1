@@ -1,10 +1,14 @@
 import {View,Text,StyleSheet, TextInput} from 'react-native';
 
 const FormField = props => {
-    const {title,onChange,placeholder,value1} = props;
+    const {title,onChange,placeholder,value1,error} = props;
     return(
         <View style={styles.container}>
-            <Text style={{...styles.frmLabel}}>{title||"Enter a Label"}</Text>
+            <View style={styles.txtCont}>
+                <Text style={{...styles.frmLabel}}>{title||"Enter a Label"}</Text>
+                <Text style={{...styles.frmErr}}>{error}</Text>
+            </View>
+            
             <TextInput
               value={value1}
               autoCapitalize="none"
@@ -31,6 +35,11 @@ const styles = StyleSheet.create({
         marginRight:'5%',
 
     },
+    txtCont:{
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-between'
+    },
     frmLabel:{
         fontSize: 18,
         fontWeight: '600',
@@ -47,8 +56,13 @@ const styles = StyleSheet.create({
         color: '#222',
         borderColor: '#C9D3DB',
         borderStyle: 'solid',
-        marginBottom: 20,
         placeholderTextColor: 'white',
+    },
+    frmErr:{
+        fontSize: 14,
+        fontWeight: '400',
+        color: 'red',
+        marginLeft: 10,
     },
 });
 

@@ -19,7 +19,7 @@ import { NavigationContainer } from '@react-navigation/native';
 function App(): React.JSX.Element {
   return (
     <SafeAreaProvider style={styles.container}>
-      <EmailProvider>
+    <EmailProvider>
       <NavigationContainer>
         <AppNavigation />
       </NavigationContainer>

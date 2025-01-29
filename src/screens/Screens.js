@@ -16,4 +16,4 @@ import Logout from "./Logout";
 import Welcome from "./Welcome";
 
 
-export {Login, Signup, Profile, Outstanding, Inbox,Privacy,Payment,Wallet,Archived,Pinned,Read, Logout};
+export {Login, Signup, Profile, Outstanding, Inbox, Privacy, Payment, Wallet, Archived, Pinned, Read, Welcome, Profile, Outstanding, Inbox,Privacy,Payment,Wallet,Archived,Pinned,Read, Logout};
