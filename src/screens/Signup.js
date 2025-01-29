@@ -5,9 +5,14 @@ import Background from '../components/Background'; // Import the Background comp
 import { useSafeAreaInsets } from 'react-native-safe-area-context'; // Import SafeArea context for dynamic insets
 import { useNavigation } from '@react-navigation/native';
 
-const Signup = () => {
+const Signup = ({route}) => {
   const insets = useSafeAreaInsets(); // Get safe area insets (top, bottom, left, right)
   const navigation = useNavigation();
+  const { userId } = route.params;
+  const update = () => {
+    navigation.push('Signup');
+    navigation.setParams({userId: userId+10})
+  }
   return (
     <SafeAreaView style={[styles.container, { paddingTop: insets.top }]}>
       {/* Background Component */}
@@ -20,21 +25,25 @@ const Signup = () => {
           title={'Sign Up'} 
           style2={{ color: 'white' }} 
           showBackButton={true}
-          onBackPress={() => navigation.replace('Login')}/>
+          onBackPress={() => navigation.goBack()}/>
         </View>
 
         {/* Form Fields and Button */}
         <View style={styles.formContainer}>
+        <Heading 
+          title={`GuestId: ${userId}`} 
+          style2={{ color: 'black', fontSize: 16 }} 
+          showBackButton={false}/>
           <FormField title={'First Name'} placeholder={'John'} />
           <FormField title={'Last Name'} placeholder={'Doe'} />
           <FormField title={'Email'} placeholder={'johndoe@example.com'} />
           <FormField title={'Password'} placeholder={'* * * * * * *'} />
           <FormField title={'Confirm Password'} placeholder={'* * * * * * *'} />
-          <FormButton title={'Sign Up'} />
+          <FormButton title={'Sign Up'} onPress={update}/>
         </View>
 
         {/* Footer */}
-        <Footer title1={"Already have an account?"} title2={"SignIn"} onPress={() => navigation.replace('Login')}/>
+        <Footer title1={"Already have an account?"} title2={"SignIn"} onPress={() => navigation.popToTop()}/>
       </View>
     </SafeAreaView>
   );

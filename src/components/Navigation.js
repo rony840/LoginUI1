@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Login, Signup, Outstanding, Inbox, Profile, Privacy, Payment, Wallet, Pinned, Archived, Read} from '../screens/Screens';
+import { Logout, Login, Signup, Outstanding, Inbox, Profile, Privacy, Payment, Wallet, Pinned, Archived, Read} from '../screens/Screens';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Image } from 'react-native';
@@ -12,7 +12,7 @@ const RootStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Signup" component={Signup} />
+      <Stack.Screen name="Signup" component={Signup} initialParams={{ userId: 786 }}/>
       <Stack.Screen name="LoggedIn"component={MyTabs}/>
     </Stack.Navigator>
   );
@@ -76,7 +76,7 @@ function Drawer1() {
     <Drawer.Navigator>
       <Drawer.Screen name="Profile" component={Profile} />
       <Drawer.Screen name="Privacy" component={Privacy} />
-      <Drawer.Screen name="Logout" component={RootStack} />
+      <Drawer.Screen name="Logout" component={Logout} />
     </Drawer.Navigator>
   );
 }
