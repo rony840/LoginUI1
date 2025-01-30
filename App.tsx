@@ -5,7 +5,6 @@ import './src/gesture-handler';
  *
  * @format
  */
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -15,10 +14,11 @@ import AppNavigation from './src/components/Navigation';
 import { EmailProvider } from './src/EmailContext';
 import { NavigationContainer } from '@react-navigation/native';
 import ErrorBoundary from './src/components/ErrorBoundary';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaProvider>
       <ErrorBoundary>
       <EmailProvider>
       <NavigationContainer>
@@ -26,7 +26,7 @@ function App(): React.JSX.Element {
       </NavigationContainer>
     </EmailProvider>
       </ErrorBoundary>
-    </SafeAreaView>
+    </SafeAreaProvider>
     
   );
 }

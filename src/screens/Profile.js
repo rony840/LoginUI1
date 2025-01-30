@@ -11,10 +11,10 @@ const Profile = () => {
   const { email } = useEmail();
   
   return (
-    <SafeAreaView style={[styles.container, { paddingTop: insets.top }]}>
+    <SafeAreaView style={[styles.container]}>
       <Background style2={{ flex: 5 }} />
 
-      <View style={[styles.contentContainer, { paddingTop: insets.top }]}>
+      <View style={[styles.contentContainer]}>
         <View style={styles.header}>
           <Heading title={`Welcome ${email || 'Guest'}`} style2={{ color: 'white' }} />
         </View>
