@@ -1,4 +1,4 @@
-import { useEmail } from '../context/EmailContext';
+import { useEmail } from '../store/context/EmailContext';
 import { StyleSheet, SafeAreaView, View, ScrollView } from 'react-native';
 import { FormButton, Logo, Heading, Footer, FormField, Background } from '../components/Components';
 import { useNavigation } from '@react-navigation/native';

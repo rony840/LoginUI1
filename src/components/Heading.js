@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Heading = (props) => {
   const { title, style2, showBackButton, onBackPress } = props;

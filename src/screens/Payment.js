@@ -2,7 +2,7 @@ import { StyleSheet, SafeAreaView, View, SectionList, Text} from 'react-native';
 import { Heading, PaymentItem } from '../components/Components';
 import Background from '../components/Background'; 
 import { useSafeAreaInsets } from 'react-native-safe-area-context'; 
-import { paymentData } from '../PaymentData';
+import { paymentData } from '../store/PaymentData';
 
 const Payment = () => {
   const insets = useSafeAreaInsets();

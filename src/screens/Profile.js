@@ -2,7 +2,7 @@ import { StyleSheet, SafeAreaView, View } from 'react-native';
 import { Heading } from '../components/Components';
 import Background from '../components/Background'; 
 import { useSafeAreaInsets } from 'react-native-safe-area-context'; 
-import { useEmail } from '../context/EmailContext';
+import { useEmail } from '../store/context/EmailContext';
 
 const Profile = () => {
 

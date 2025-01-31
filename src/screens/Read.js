@@ -4,7 +4,7 @@ import { StyleSheet, SafeAreaView, View, ScrollView } from 'react-native';
 import { Heading, InboxItem } from '../components/Components';
 import Background from '../components/Background';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { inboxData } from '../InboxData'; // import data from InboxData.js
+import { inboxData } from '../store/InboxData'; // import data from InboxData.js
 
 const Inbox = () => {
   const insets = useSafeAreaInsets();

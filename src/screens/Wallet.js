@@ -2,6 +2,7 @@ import { StyleSheet, SafeAreaView, View } from 'react-native';
 import { Heading } from '../components/Components';
 import Background from '../components/Background'; 
 import { useSafeAreaInsets } from 'react-native-safe-area-context'; 
+import HeadingClass from '../components/HeadingClass';
 
 
 const Wallet = () => {
@@ -13,8 +14,9 @@ const Wallet = () => {
 
       <View style={styles.contentContainer}>
         <View style={styles.header}>
-          <Heading title={`Wallet`} style2={{ color: 'white' }} />
+          <Heading title={`Redux in Class`} style2={{ color: 'white' }} />
         </View>
+        <HeadingClass/>
       </View>
     </SafeAreaView>
   );

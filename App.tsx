@@ -11,13 +11,14 @@ import {
   StyleSheet,
 } from 'react-native';
 import AppNavigation from './src/components/Navigation';
-import { EmailProvider } from './src/context/EmailContext';
+import { EmailProvider } from './src/store/context/EmailContext';
 import { NavigationContainer } from '@react-navigation/native';
 import ErrorBoundary from './src/components/ErrorBoundary';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import PermissionHelper from './src/helper/PermissionHelper.android';
 import PermissionHelperIos from './src/helper/PermissionHelper.ios';
-
+import {Provider} from 'react-redux'
+import store from './src/store/redux/store';
 
 function App(): React.JSX.Element {
   useEffect(()=>{
@@ -30,6 +31,7 @@ function App(): React.JSX.Element {
   },[])
   return (
     <SafeAreaProvider>
+      <Provider store={store()}>
       <ErrorBoundary>
       <EmailProvider>
       <NavigationContainer>
@@ -37,6 +39,7 @@ function App(): React.JSX.Element {
       </NavigationContainer>
     </EmailProvider>
       </ErrorBoundary>
+      </Provider> 
     </SafeAreaProvider>
     
   );

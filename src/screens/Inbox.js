@@ -4,7 +4,7 @@ import { StyleSheet, SafeAreaView, View, FlatList } from 'react-native';
 import { Heading, InboxItem } from '../components/Components';
 import Background from '../components/Background';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { inboxData } from '../InboxData';
+import { inboxData } from '../store/InboxData';
 
 const Inbox = () => {
   const insets = useSafeAreaInsets();
