@@ -6,20 +6,52 @@ import { useEffect, useState } from 'react';
 
 const Pinned = () => {
   const [location, setLocation] = useState({ latitude: null, longitude: null });
+  const [permissionStatus, setPermissionStatus] = useState(null);  // Track permission status
 
   useEffect(() => {
-    // Fetch current position when the component mounts
-    Geolocation.getCurrentPosition(
+    // Request location permission when the component mounts
+    Geolocation.requestAuthorization(
+      () => {
+        console.log('Location permission granted');
+        setPermissionStatus('granted');
+        getLocation();
+      },
+      (error) => {
+        console.error("Location permission error:", error);
+        setPermissionStatus('denied');
+      }
+    );
+    let listenerId = Geolocation.watchPosition(
       (position) => {
+        console.log('tacking location:', position);
         const { latitude, longitude } = position.coords;
         setLocation({ latitude, longitude });
       },
       (error) => {
         console.error("Error getting location", error);
-        // Handle error, if needed (maybe set a default location or show a message)
+      },{distanceFilter: 10}
+    );
+    return() => {Geolocation.clearWatch(listenerId)};
+  }, []);
+
+  const getLocation = () => {
+    Geolocation.getCurrentPosition(
+      (position) => {
+        console.log('Raw location data:', position);
+        const { latitude, longitude } = position.coords;
+        setLocation({ latitude, longitude });
+      },
+      (error) => {
+        console.error("Error getting location", error);
+        // Handle error, e.g. location service not available
       }
     );
-  }, []); // Empty array means this effect runs once on mount
+    
+  };
+
+  
+  
+
 
   return (
     <View style={styles.container}>
@@ -29,13 +61,23 @@ const Pinned = () => {
         <View style={styles.header}>
           <Heading title={`Pinned Inbox`} style2={{ color: 'white' }} />
         </View>
-        
-        {/* Conditionally render latitude and longitude */}
-        {location.latitude && location.longitude ? (
-          <Heading title={`Lat: ${location.latitude} and Lon: ${location.longitude}`} style2={{ color: 'black', fontSize:18 }} />
-        ) : (
-          <Heading title={`Loading location...`} style2={{ color: 'black', fontSize:18 }} />
-        )}
+        <View style={styles.Cont2}>
+          {/* Conditionally render latitude and longitude */}
+          {permissionStatus === 'granted' ? (
+            location.latitude && location.longitude ? (
+              <Heading
+                title={`Lat: ${location.latitude} and Lon: ${location.longitude}`}
+                style2={{ color: 'black', fontSize: 18 }}
+              />
+            ) : (
+              <Heading title={`Loading location...`} style2={{ color: 'black', fontSize: 18 }} />
+            )
+          ) : permissionStatus === 'denied' ? (
+            <Heading title={`Permission denied`} style2={{ color: 'black', fontSize: 18 }} />
+          ) : (
+            <Heading title={`Requesting permission...`} style2={{ color: 'black', fontSize: 18 }} />
+          )}
+        </View>
       </View>
     </View>
   );
@@ -52,7 +94,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     paddingHorizontal: '5%',
     paddingVertical: '5%',
   },
@@ -62,11 +104,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 50,
   },
-  formContainer: {
+  Cont2: {
     flex: 1,
-    top: 0,
-    marginTop: '10%',
-    justifyContent: 'center',
+    marginTop: '50%',
   },
 });
 

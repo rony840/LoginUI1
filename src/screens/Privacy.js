@@ -6,13 +6,13 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Privacy = () => {
   const insets = useSafeAreaInsets();
-  throw new Error ();
+  //throw new Error ();
   
   return (
     <SafeAreaView style={[styles.container, { paddingTop: insets.top }]}>
       <Background style2={{ flex: 5 }} />
 
-      <View style={[styles.contentContainer, { paddingTop: insets.top }]}>
+      <View style={styles.contentContainer}>
         <View style={styles.header}>
           <Heading title={`Privacy Settings`} style2={{ color: 'white' }} />
         </View>

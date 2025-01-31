@@ -11,7 +11,7 @@ const Payment = () => {
     <SafeAreaView style={[styles.container, { paddingTop: insets.top }]}>
       <Background style2={{ flex: 5 }} />
 
-      <View style={[styles.contentContainer, { paddingTop: insets.top }]}>
+      <View style={styles.contentContainer}>
         <View style={styles.header}>
           <Heading title={`Payment`} style2={{ color: 'white' }} />
         </View>

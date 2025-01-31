@@ -14,7 +14,7 @@ const Profile = () => {
     <SafeAreaView style={[styles.container]}>
       <Background style2={{ flex: 5 }} />
 
-      <View style={[styles.contentContainer]}>
+      <View style={styles.contentContainer}>
         <View style={styles.header}>
           <Heading title={`Welcome ${email || 'Guest'}`} style2={{ color: 'white' }} />
         </View>

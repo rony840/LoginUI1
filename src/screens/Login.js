@@ -1,5 +1,5 @@
 import { useEmail } from '../EmailContext';
-import { StyleSheet, SafeAreaView, View } from 'react-native';
+import { StyleSheet, SafeAreaView, View, ScrollView } from 'react-native';
 import { FormButton, Logo, Heading, Footer, FormField, Background } from '../components/Components';
 import { useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
@@ -24,8 +24,8 @@ const Login = () => {
       <View style={styles.logoContainer}>
         <Logo />
       </View>
-
       <View style={styles.contentContainer}>
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
         {/* Header with Logo and Heading */}
         <View style={styles.header}>
           <Heading title={'Login'} />
@@ -60,6 +60,7 @@ const Login = () => {
 
         {/* Footer */}
         <Footer title1={"Don't have an account?"} title2={"SignUp"} onPress={() => navigation.navigate('Signup')}/>
+      </ScrollView>
       </View>
     </SafeAreaView>
   );
@@ -96,6 +97,10 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop:'-5%',
     justifyContent: 'center',
+  },
+  scrollViewContent: {
+    flexGrow: 1, // Makes the content scrollable
+    justifyContent: 'space-between', // Ensures footer stays at the bottom
   },
 });
 
