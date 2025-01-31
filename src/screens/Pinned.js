@@ -1,54 +1,31 @@
 import { StyleSheet, SafeAreaView, View } from 'react-native';
 import { Heading } from '../components/Components';
 import Background from '../components/Background'; 
-import Geolocation from '@react-native-community/geolocation';
 import { useEffect, useState } from 'react';
+import LocationHelper from '../helper/LocationHelper';
 
 const Pinned = () => {
   const [location, setLocation] = useState({ latitude: null, longitude: null });
-  const [permissionStatus, setPermissionStatus] = useState(null);  // Track permission status
-
-  useEffect(() => {
-    // Request location permission when the component mounts
-    Geolocation.requestAuthorization(
-      () => {
-        console.log('Location permission granted');
-        setPermissionStatus('granted');
-        getLocation();
-      },
-      (error) => {
-        console.error("Location permission error:", error);
-        setPermissionStatus('denied');
-      }
-    );
-    let listenerId = Geolocation.watchPosition(
-      (position) => {
-        console.log('tacking location:', position);
-        const { latitude, longitude } = position.coords;
-        setLocation({ latitude, longitude });
-      },
-      (error) => {
-        console.error("Error getting location", error);
-      },{distanceFilter: 10}
-    );
-    return() => {Geolocation.clearWatch(listenerId)};
+  useEffect(() => {    
+    LocationHelper.getLocation((location)=> {
+      console.log('Raw Location Data: ',location);
+      const { latitude, longitude } = location.coords;
+      setLocation({ latitude, longitude });
+    });
+    let watcherId = LocationHelper.watchLocation((location)=> {
+      console.log('Raw watch Location Data: ',location);
+      const { latitude, longitude } = location.coords;
+      setLocation({ latitude, longitude });
+    });
+    return () => {
+      LocationHelper.removeListener(watcherId);
+      console.log('removing location watcher');
+    }
   }, []);
 
-  const getLocation = () => {
-    Geolocation.getCurrentPosition(
-      (position) => {
-        console.log('Raw location data:', position);
-        const { latitude, longitude } = position.coords;
-        setLocation({ latitude, longitude });
-      },
-      (error) => {
-        console.error("Error getting location", error);
-        // Handle error, e.g. location service not available
-      }
-    );
+  const loadLocation = async () => {
     
-  };
-
+  }
   
   
 
@@ -63,20 +40,14 @@ const Pinned = () => {
         </View>
         <View style={styles.Cont2}>
           {/* Conditionally render latitude and longitude */}
-          {permissionStatus === 'granted' ? (
-            location.latitude && location.longitude ? (
+          {location ? (
               <Heading
                 title={`Lat: ${location.latitude} and Lon: ${location.longitude}`}
                 style2={{ color: 'black', fontSize: 18 }}
               />
             ) : (
               <Heading title={`Loading location...`} style2={{ color: 'black', fontSize: 18 }} />
-            )
-          ) : permissionStatus === 'denied' ? (
-            <Heading title={`Permission denied`} style2={{ color: 'black', fontSize: 18 }} />
-          ) : (
-            <Heading title={`Requesting permission...`} style2={{ color: 'black', fontSize: 18 }} />
-          )}
+            )}
         </View>
       </View>
     </View>

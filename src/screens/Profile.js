@@ -2,16 +2,15 @@ import { StyleSheet, SafeAreaView, View } from 'react-native';
 import { Heading } from '../components/Components';
 import Background from '../components/Background'; 
 import { useSafeAreaInsets } from 'react-native-safe-area-context'; 
-import { useEmail } from '../EmailContext';
+import { useEmail } from '../context/EmailContext';
 
 const Profile = () => {
-  const insets = useSafeAreaInsets();
 
   
   const { email } = useEmail();
   
   return (
-    <SafeAreaView style={[styles.container]}>
+    <SafeAreaView style={styles.container}>
       <Background style2={{ flex: 5 }} />
 
       <View style={styles.contentContainer}>

@@ -14,5 +14,4 @@ export const EmailProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use the email context
 export const useEmail = () => useContext(EmailContext);

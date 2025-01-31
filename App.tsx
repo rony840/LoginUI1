@@ -5,18 +5,29 @@ import './src/gesture-handler';
  *
  * @format
  */
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
-  SafeAreaView,
+  Platform,
   StyleSheet,
 } from 'react-native';
 import AppNavigation from './src/components/Navigation';
-import { EmailProvider } from './src/EmailContext';
+import { EmailProvider } from './src/context/EmailContext';
 import { NavigationContainer } from '@react-navigation/native';
 import ErrorBoundary from './src/components/ErrorBoundary';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import PermissionHelper from './src/helper/PermissionHelper.android';
+import PermissionHelperIos from './src/helper/PermissionHelper.ios';
+
 
 function App(): React.JSX.Element {
+  useEffect(()=>{
+    if (Platform.OS=='android'){
+      PermissionHelper.locationPermission();
+    }
+    if(Platform.OS=='android'){
+      PermissionHelperIos.locationPermission();
+    }
+  },[])
   return (
     <SafeAreaProvider>
       <ErrorBoundary>
