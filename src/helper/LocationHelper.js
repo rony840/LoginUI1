@@ -7,8 +7,17 @@ class LocationHelper{
     getLocation = callback => {
         Geolocation.getCurrentPosition (position => callback(position));
     };
-    watchLocation = callback => {
-        let watcherId = Geolocation.watchPosition (position => callback(position));
+    watchLocation = (callback,distanceFilter = 1) => {
+        let watcherId = Geolocation.watchPosition(
+            position => callback(position),
+            error => console.log(error),
+            {
+                distanceFilter: distanceFilter, 
+                enableHighAccuracy: true, 
+                timeout: 1000, 
+                maximumAge: 500, 
+            });
+        
         return watcherId;
     };
     removeListener = id => {
