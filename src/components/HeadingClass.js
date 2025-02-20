@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { addValue, divValue, subValue, mulValue } from '../store/redux/actions/calculatorActions';
 import FormButton from './FormButton';
+import withLogger from './withLogger';
 
 class HeadingCls extends Component {
   constructor (props){
@@ -15,7 +16,9 @@ class HeadingCls extends Component {
         <Text style={{...styles.header}}>
           {this.props.calc || 'Add Heading'}
         </Text>
-        <FormButton title={'add'} onPress={()=>this.props.add()}/>
+        <FormButton title={'add'} onPress={()=>{
+          this.props.setState('add')
+          this.props.add()}}/>
         <FormButton title={'sub'} onPress={()=>this.props.sub()}/>
         <FormButton title={'mul'} onPress={()=>this.props.mul()}/>
         <FormButton title={'div'} onPress={()=>this.props.div()}/>
@@ -54,4 +57,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(HeadingCls);
+export default connect(mapStateToProps,mapDispatchToProps)(withLogger(HeadingCls));
